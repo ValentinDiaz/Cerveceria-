@@ -1,2 +1,2 @@
-# Cerveceria-
-Semeninario de Angular 2025
+# Cerveceria
+Seminario de Angular 2025
