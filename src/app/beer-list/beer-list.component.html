@@ -1,19 +1,43 @@
 <div class="row">
-  <div class="col-md-4 mb-4" *ngFor="let cerveza of cervezas" >
-    <div class="card h-100" [ngClass]="{'clearance': cerveza.clearance }">
+  @for (cerveza of cervezas; track cerveza.nombre) {
+  <div class="col-md-4 mb-4">
+    <div class="card h-100" [ngClass]="{ clearance: cerveza.clearance }">
       <img [src]="cerveza.imagen" class="card-img-top" [alt]="cerveza.nombre" />
       <div class="card-body">
         <h5 class="card-title">{{ cerveza.nombre }}</h5>
         <p class="card-text">{{ cerveza.descripcion }}</p>
         <p class="card-text">{{ cerveza.precio | currency }}</p>
         <p class="card-text">{{ cerveza.tipo }}</p>
-        <p *ngIf="cerveza.stock===0" class="card-text">Sin stock</p>
-
-
+        @if (cerveza.stock>0) {
+        <p class="card-text">Stock disponible: {{ cerveza.stock }}</p>
+        } @else {
+        <p class="card-text text-danger">Sin stock</p>
+        }
         <p class="card-text">
-          <small class="text-muted">ABV: {{ cerveza.abv }}%</small>
+          <small class="card-text text-warning">ABV: {{ cerveza.abv }}%</small>
+        </p>
+        <p class="d-flex align-items-center gap-2">
+          Comprar:
+          <button
+            class="btn btn-sm btn-outline-secondary"
+            (click)="restarCantidad(cerveza)"
+          >
+            −
+          </button>
+          <input type="text" [(ngModel)]="cerveza.cantidad">
+          <button
+            class="btn btn-sm btn-outline-secondary"
+            (click)="sumarCantidad(cerveza)"
+          >
+            +
+          </button>
         </p>
       </div>
     </div>
   </div>
+  } @empty {
+  <div class="col-md-12">
+    <p>No hay cervezas para mostrar.</p>
+  </div>
+  }
 </div>

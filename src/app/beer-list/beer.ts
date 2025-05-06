@@ -1,4 +1,4 @@
-export interface Beer{
+export interface Cerveza{
     nombre:string,
     descripcion:string,
     abv:number,
@@ -7,4 +7,5 @@ export interface Beer{
     stock:number,
     precio:number,
     clearance: boolean,
+    cantidad:number
 }
