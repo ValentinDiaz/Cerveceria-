@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Cerveza } from './beer';
+import { BeerCartService } from '../beer-cart.service';
 
 @Component({
   selector: 'app-beer-list',
@@ -8,6 +9,14 @@ import { Cerveza } from './beer';
   styleUrl: './beer-list.component.scss',
 })
 export class BeerListComponent {
+
+
+
+
+  constructor(private carrito : BeerCartService){
+
+
+  }
   cervezas: Cerveza[] = [
     {
       nombre: 'Cerveza Rubia',
@@ -74,16 +83,7 @@ export class BeerListComponent {
     },
   ];
 
-  sumarCantidad(cerveza: Cerveza) {
-    if(cerveza.cantidad<cerveza.stock)
-      cerveza.cantidad++;
-  }
-  restarCantidad(cerveza: Cerveza) {
-    if(cerveza.cantidad>0){
-      cerveza.cantidad--;
-    }
-    else{
-      return;
-    }
+  comprarCerveza(cerveza: Cerveza) {
+    this.carrito.agregarAlCrrito(cerveza);
   }
 }

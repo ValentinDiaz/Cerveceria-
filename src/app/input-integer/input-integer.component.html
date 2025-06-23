@@ -1,0 +1,16 @@
+ <p class="d-flex align-items-center gap-2">
+          Comprar:
+          <button
+            class="btn btn-sm btn-outline-secondary"
+            (click)="restarCantidad()"
+          >
+            −
+          </button>
+          <input type="text" [(ngModel)]="valor">
+          <button
+            class="btn btn-sm btn-outline-secondary"
+            (click)="sumarCantidad()"
+          >
+            +
+          </button>
+        </p>

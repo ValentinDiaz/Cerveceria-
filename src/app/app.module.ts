@@ -9,6 +9,7 @@ import { AboutComponent } from './about/about.component';
 import { BeersComponent } from './beers/beers.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { RouterModule } from '@angular/router';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { RouterModule } from '@angular/router';
     AboutComponent,
     BeersComponent,
     CarritoComponent,
+    InputIntegerComponent,
   ],
   imports: [
     BrowserModule,

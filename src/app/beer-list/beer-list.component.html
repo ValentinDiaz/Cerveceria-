@@ -16,22 +16,10 @@
         <p class="card-text">
           <small class="card-text text-warning">ABV: {{ cerveza.abv }}%</small>
         </p>
-        <p class="d-flex align-items-center gap-2">
-          Comprar:
-          <button
-            class="btn btn-sm btn-outline-secondary"
-            (click)="restarCantidad(cerveza)"
-          >
-            −
-          </button>
-          <input type="text" [(ngModel)]="cerveza.cantidad">
-          <button
-            class="btn btn-sm btn-outline-secondary"
-            (click)="sumarCantidad(cerveza)"
-          >
-            +
-          </button>
-        </p>
+        @if(cerveza.stock>0){
+        <p><app-input-integer [(valor)]="cerveza.cantidad"  [max]="cerveza.stock" ></app-input-integer></p>
+        <button class="" (click)="comprarCerveza(cerveza)">Comprar</button>
+        }
       </div>
     </div>
   </div>
