@@ -1,31 +1,55 @@
-<div class="row">
-  @for (cerveza of cervezas; track cerveza.nombre) {
-  <div class="col-md-4 mb-4">
-    <div class="card h-100" [ngClass]="{ clearance: cerveza.clearance }">
-      <img [src]="cerveza.imagen" class="card-img-top" [alt]="cerveza.nombre" />
-      <div class="card-body">
-        <h5 class="card-title">{{ cerveza.nombre }}</h5>
-        <p class="card-text">{{ cerveza.descripcion }}</p>
-        <p class="card-text">{{ cerveza.precio | currency }}</p>
-        <p class="card-text">{{ cerveza.tipo }}</p>
-        @if (cerveza.stock>0) {
-        <p class="card-text">Stock disponible: {{ cerveza.stock }}</p>
-        } @else {
-        <p class="card-text text-danger">Sin stock</p>
-        }
-        <p class="card-text">
-          <small class="card-text text-warning">ABV: {{ cerveza.abv }}%</small>
-        </p>
-        @if(cerveza.stock>0){
-        <p><app-input-integer [(valor)]="cerveza.cantidad"  [max]="cerveza.stock" ></app-input-integer></p>
-        <button class="" (click)="comprarCerveza(cerveza)">Comprar</button>
+<div class="container">
+  <div class="row">
+    <!-- Columna para las cervezas -->
+    <div class="col-md-8">
+      <div class="row">
+        @for (cerveza of cervezas; track cerveza.nombre) {
+        <div class="col-md-6 mb-4">
+          <div class="card h-100" [ngClass]="{ clearance: cerveza.clearance }">
+            <img
+              [src]="cerveza.imagen"
+              class="card-img-top"
+              [alt]="cerveza.nombre"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ cerveza.nombre }}</h5>
+              <p class="card-text">{{ cerveza.descripcion }}</p>
+              <p class="card-text">{{ cerveza.precio | currency }}</p>
+              <p class="card-text">{{ cerveza.tipo }}</p>
+              <p class="card-text">
+                <small class="card-text text-warning">
+                  ABV: {{ cerveza.abv }}%
+                </small>
+              </p>
+
+              <span class="card-text" *ngIf="cerveza.stock > 0">
+                Stock disponible: {{ cerveza.stock }}
+              </span>
+              <span class="card-text text-danger" *ngIf="cerveza.stock <= 0">
+                Sin stock
+              </span>
+
+              <div *ngIf="cerveza.stock > 0">
+                <app-input-integer
+                  [(valor)]="cerveza.cantidad"
+                  [max]="cerveza.stock"
+                ></app-input-integer>
+                <button (click)="comprarCerveza(cerveza)">Comprar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        } @empty {
+        <div class="col-md-12">
+          <p>No hay cervezas para mostrar.</p>
+        </div>
         }
       </div>
     </div>
+
+    <!-- Columna para el carrito al costado -->
+    <div class="col-md-4">
+      <app-carrito></app-carrito>
+    </div>
   </div>
-  } @empty {
-  <div class="col-md-12">
-    <p>No hay cervezas para mostrar.</p>
-  </div>
-  }
 </div>

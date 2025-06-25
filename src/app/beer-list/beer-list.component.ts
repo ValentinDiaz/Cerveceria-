@@ -84,6 +84,9 @@ export class BeerListComponent {
   ];
 
   comprarCerveza(cerveza: Cerveza) {
+
     this.carrito.agregarAlCrrito(cerveza);
+    cerveza.stock -= cerveza.cantidad;
+    cerveza.cantidad =0;
   }
 }

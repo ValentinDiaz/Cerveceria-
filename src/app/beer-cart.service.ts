@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Cerveza } from './beer-list/beer';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BeerCartService {
+  constructor() {}
+  private _listaCompras : Cerveza[] = [];
+  listaCompras: BehaviorSubject<Cerveza[]> = new BehaviorSubject(this._listaCompras);
 
-  constructor() { }
+  agregarAlCrrito(cerveza: Cerveza) {
+    let item = this._listaCompras.find((c1) => c1.nombre == cerveza.nombre);
 
-  listaCompras: Cerveza[] = [];
+    if (!item) {
+      this._listaCompras.push({... cerveza});
+    }else{
+      item.cantidad += cerveza.cantidad;
+    }
 
+    console.log(this._listaCompras);
 
-  agregarAlCrrito( cerveza: Cerveza){
-    this.listaCompras.push(cerveza)
+    this.listaCompras.next(this._listaCompras);
   }
-
-
-
-
 }
