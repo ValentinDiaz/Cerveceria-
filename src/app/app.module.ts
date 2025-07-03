@@ -10,6 +10,7 @@ import { BeersComponent } from './beers/beers.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { RouterModule } from '@angular/router';
 import { InputIntegerComponent } from './input-integer/input-integer.component';
+import {  HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { InputIntegerComponent } from './input-integer/input-integer.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration(withEventReplay())
