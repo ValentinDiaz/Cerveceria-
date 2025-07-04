@@ -50,6 +50,8 @@
     <!-- Columna para el carrito al costado -->
     <div class="col-md-4">
       <app-carrito></app-carrito>
+      <h2>!Agrega una cerveza</h2>
+      <app-beer-form (valorChange)="recibirCerveza($event)"></app-beer-form>
     </div>
   </div>
 </div>

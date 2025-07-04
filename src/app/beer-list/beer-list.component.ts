@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cerveza } from './beer';
 import { BeerCartService } from '../beer-cart.service';
 import { BeerServiceService } from '../beer-service.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-beer-list',
@@ -87,6 +88,16 @@ export class BeerListComponent implements OnInit {
   //       'https://images.unsplash.com/photo-1647185072241-a1cc40d82a82?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   //   },
   // ];
+
+  recibirCerveza(cerveza: Cerveza) {
+    this.cervezaSevice.agregarCerveza(cerveza).subscribe({
+      next: (res) => {
+        this.cervezas.push(res); 
+        console.log('Cerveza guardada y lista para mostrar:', res);
+      },
+      error: (err) => console.error('Error al guardar:', err),
+    });
+  }
 
   comprarCerveza(cerveza: Cerveza) {
     this.carrito.agregarAlCrrito(cerveza);

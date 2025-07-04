@@ -4,13 +4,14 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BeerListComponent } from './beer-list/beer-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
 import { BeersComponent } from './beers/beers.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { RouterModule } from '@angular/router';
 import { InputIntegerComponent } from './input-integer/input-integer.component';
 import {  HttpClientModule } from '@angular/common/http';
+import { BeerFormComponent } from './beer-form/beer-form.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,15 @@ import {  HttpClientModule } from '@angular/common/http';
     BeersComponent,
     CarritoComponent,
     InputIntegerComponent,
+    BeerFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
+    
   ],
   providers: [
     provideClientHydration(withEventReplay())

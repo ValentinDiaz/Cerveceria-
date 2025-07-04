@@ -1,0 +1,56 @@
+<form [formGroup]="formCervezas" (ngSubmit)="guardarCerveza()" class="form-beer">
+
+  <label>
+    Nombre:
+    <input type="text" formControlName="nombre">
+  </label>
+  <div *ngIf="formCervezas.get('nombre')?.invalid && formCervezas.get('nombre')?.touched">
+    El nombre es obligatorio.
+  </div>
+
+  <label>
+    Tipo:
+    <input type="text" formControlName="tipo">
+  </label>
+  <div *ngIf="formCervezas.get('tipo')?.invalid && formCervezas.get('tipo')?.touched">
+    El tipo es obligatorio.
+  </div>
+
+  <label>
+    Descripción:
+    <textarea formControlName="descripcion"></textarea>
+  </label>
+
+  <label>
+    ABV (% alcohol):
+    <input type="number" formControlName="abv">
+  </label>
+
+  <label>
+    Stock:
+    <input type="number" formControlName="stock">
+  </label>
+
+  <label>
+    Precio:
+    <input type="number" formControlName="precio">
+  </label>
+
+  <label>
+    En oferta (Clearance):
+    <input type="checkbox" formControlName="clearance">
+  </label>
+
+  <label>
+    Cantidad:
+    <input type="number" formControlName="cantidad">
+  </label>
+
+  <label>
+    Imagen (URL):
+    <input type="text" formControlName="imagen">
+  </label>
+
+  <button type="submit" [disabled]="formCervezas.invalid">Guardar</button>
+
+</form>

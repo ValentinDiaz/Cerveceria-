@@ -20,4 +20,9 @@ export class BeerServiceService {
         )
       );
   }
+
+
+   agregarCerveza(cerveza: Cerveza): Observable<Cerveza> {
+    return this.httpCliente.post<Cerveza>(URL, cerveza);
+  }
 }

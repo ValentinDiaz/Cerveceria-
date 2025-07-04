@@ -1,0 +1,48 @@
+.form-beer {
+  background-color: #292727;
+  border: 3px solid #db9108;
+  color: #f1f1f1;
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.form-beer input,
+.form-beer textarea,
+.form-beer select {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0 16px 0;
+  border-radius: 4px;
+  border: 1px solid #db9108;
+  background-color: #3c3c3c;
+  color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+.form-beer input:focus,
+.form-beer textarea:focus,
+.form-beer select:focus {
+  outline: none;
+  background-color: #4a4a4a;
+}
+
+.form-beer button {
+  background-color: #db9108;
+  color: #292727;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-beer button:hover {
+  background-color: #f5b43b;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
