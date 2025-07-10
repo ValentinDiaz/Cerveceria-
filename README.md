@@ -8,7 +8,8 @@ Se utilizaron tanto componentes como por ejemplo carrito y foormulario para agre
 
 
 ## 🔗 Enlaces de Entrega
-https://stackblitz.com/~/github.com/ValentinDiaz/Cerveceria-
+https://stackblitz.com/github/ValentinDiaz/Cerveceria-
+
 https://github.com/ValentinDiaz/Cerveceria-
 
 ---
