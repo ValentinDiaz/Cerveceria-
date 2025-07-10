@@ -7,20 +7,24 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class BeerCartService {
   constructor() {}
-  private _listaCompras : Cerveza[] = [];
-  listaCompras: BehaviorSubject<Cerveza[]> = new BehaviorSubject(this._listaCompras);
+  private _listaCompras: Cerveza[] = [];
+  listaCompras: BehaviorSubject<Cerveza[]> = new BehaviorSubject(
+    this._listaCompras
+  );
 
   agregarAlCrrito(cerveza: Cerveza) {
     let item = this._listaCompras.find((c1) => c1.nombre == cerveza.nombre);
 
     if (!item) {
-      this._listaCompras.push({... cerveza});
-    }else{
+      this._listaCompras.push({ ...cerveza });
+    } else {
       item.cantidad += cerveza.cantidad;
     }
+    this.listaCompras.next(this._listaCompras);
+  }
 
-    console.log(this._listaCompras);
-
+  vaciarCarrito() {
+    this._listaCompras = [];
     this.listaCompras.next(this._listaCompras);
   }
 }

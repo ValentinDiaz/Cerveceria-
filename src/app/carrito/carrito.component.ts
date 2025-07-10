@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { Cerveza } from '../beer-list/beer';
 import { BeerCartService } from '../beer-cart.service';
 import { Observable } from 'rxjs';
@@ -10,17 +10,21 @@ import { Observable } from 'rxjs';
   styleUrl: './carrito.component.scss',
 })
 export class CarritoComponent {
+
+@Input() cantidad!: number;
+  @Output() valorChange: EventEmitter<number> = new EventEmitter<number>();
+
   listaCompras$: Observable<Cerveza[]>;
   constructor(private carrito: BeerCartService) {
-
     this.listaCompras$ = carrito.listaCompras.asObservable()
-   
+
   }
 
-  eliminarDelCarrito(_t6: Cerveza) {
-    throw new Error('Method not implemented.');
+   finalizarCompra() {
+    alert('¡Gracias por tu compra! 🥳');
+    this.carrito.vaciarCarrito();
   }
-  finalizarCompra() {
-    throw new Error('Method not implemented.');
-  }
+
+ 
+
 }

@@ -100,8 +100,11 @@ export class BeerListComponent implements OnInit {
   }
 
   comprarCerveza(cerveza: Cerveza) {
-    this.carrito.agregarAlCrrito(cerveza);
+    if(cerveza.cantidad>0){
+      this.carrito.agregarAlCrrito(cerveza);
     cerveza.stock -= cerveza.cantidad;
     cerveza.cantidad = 0;
+    }
+    
   }
 }
